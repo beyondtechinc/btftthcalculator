@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Calculadora de Presupuesto de Pérdidas</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!--DISEÑADO POR BEYONDTECH -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Presupuesto de Pérdidas ópticas en Fibra Óptica by Beyondtech</title>
+    <!-- Importar Materialize CSS y fuentes -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Importar Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Importar fuente Roboto -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Contenido principal -->
+    <main>
+      
+      
+      
+     <!-- Logo de Beyondtech -->
+<div class="logo">
+    <img src="https://www.beyondtech.es/web/image/website/1/logo/BEYONDTECH%20EUROPE?unique=58b9f95" alt="Logo Beyondtech">
+</div>
+
+      
+      <div class="container">
+            <h3 class="center-align">Calculadora de Presupuesto de Pérdidas ópticas: Diseñado por Beyondtech™</h3>
+
+                  Utiliza las mediciones obtenidas con tu equipo óptico para calcular la Pérdida por Inserción (IL) y la Pérdida por Retorno (RL).<p> 
+Ingresa las potencias en miliwatts (mW) en los campos correspondientes y haz clic en <strong>"Calcular"</strong>.
+
+          
+            <form id="lossCalculator">
+
+                <!-- Paso 1: Distancia y Atenuación -->
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header active"><i class="material-icons">straighten</i>Paso 1 - Distancia y Atenuación</div>
+                        <div class="collapsible-body">
+                            <div class="row">
+                                <!-- Distancia del Cable -->
+                                <div class="input-field col s12 m6">
+                                    <input id="cableDistance" type="number" min="0" step="any">
+                                    <label for="cableDistance">Distancia del Cable</label>
+                                </div>
+                                <!-- Unidad de Distancia -->
+                                <div class="input-field col s12 m6">
+                                    <select id="distanceUnit">
+                                        <option value="km" selected>Kilómetros</option>
+                                        <option value="m">Metros</option>
+                                    </select>
+                                    <label>Unidad de Distancia</label>
+                                </div>
+                                <!-- Atenuación por Unidad -->
+                                <div class="input-field col s12 m6">
+                                    <input id="attenuationPerUnit" type="number" min="0" step="any">
+                                    <label for="attenuationPerUnit">Atenuación por Unidad de Longitud (dB/Unidad)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Paso 2: Pérdidas por Conectores -->
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">settings_input_hdmi</i>Paso 2 - Pérdidas por Conectores</div>
+                        <div class="collapsible-body">
+                            <div class="row">
+                                <!-- Pérdida por Par de Conectores -->
+                                <div class="input-field col s12 m6">
+                                    <input id="connectorLoss" type="number" min="0" step="any" value="0.75">
+                                    <label for="connectorLoss">Pérdida por Par de Conectores (dB)</label>
+                                </div>
+                                <!-- Número de Pares de Conectores -->
+                                <div class="input-field col s12 m6">
+                                    <input id="numConnectorPairs" type="number" min="0" step="1">
+                                    <label for="numConnectorPairs">Número de Pares de Conectores</label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Paso 3: Pérdidas por Empalmes -->
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">call_split</i>Paso 3 - Pérdidas por Empalmes</div>
+                        <div class="collapsible-body">
+                            <div class="row">
+                                <!-- Pérdida por Empalme -->
+                                <div class="input-field col s12 m6">
+                                    <input id="spliceLoss" type="number" min="0" step="any" value="0.1">
+                                    <label for="spliceLoss">Pérdida por Empalme (dB)</label>
+                                </div>
+                                <!-- Número de Empalmes -->
+                                <div class="input-field col s12 m6">
+                                    <input id="numSplices" type="number" min="0" step="1">
+                                    <label for="numSplices">Número de Empalmes</label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Paso 4: Pérdidas de Otros Componentes -->
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">tune</i>Paso 4 - Pérdidas de Otros Componentes</div>
+                        <div class="collapsible-body">
+                            <div class="row">
+                                <!-- Pérdida por Switch Óptico -->
+                                <div class="input-field col s12 m6">
+                                    <input id="switchLoss" type="number" min="0" step="any" value="0">
+                                    <label for="switchLoss">Pérdida por Switch Óptico (dB)</label>
+                                </div>
+                                <!-- Pérdida por Splitter Óptico -->
+                                <div class="input-field col s12 m6">
+                                    <input id="splitterLoss" type="number" min="0" step="any" value="0">
+                                    <label for="splitterLoss">Pérdida por Splitter Óptico (dB)</label>
+                                </div>
+                                <!-- Pérdida de Otros Componentes -->
+                                <div class="input-field col s12 m6">
+                                    <input id="otherLoss" type="number" min="0" step="any" value="0">
+                                    <label for="otherLoss">Pérdida de Otros Componentes (dB)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Paso 5: Especificaciones del Equipo Electrónico -->
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">memory</i>Paso 5 - Especificaciones del Equipo Electrónico</div>
+                        <div class="collapsible-body">
+                            <div class="row">
+                                <!-- Potencia de Salida del Transmisor -->
+                                <div class="input-field col s12 m6">
+                                    <input id="transmitterPower" type="number" step="any">
+                                    <label for="transmitterPower">Potencia de Salida del Transmisor (dBm)</label>
+                                </div>
+                                <!-- Sensibilidad Mínima del Receptor -->
+                                <div class="input-field col s12 m6">
+                                    <input id="receiverSensitivity" type="number" step="any">
+                                    <label for="receiverSensitivity">Sensibilidad Mínima del Receptor (dBm)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Paso 6: Penalizaciones de Potencia -->
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">warning</i>Paso 6 - Penalizaciones de Potencia</div>
+                        <div class="collapsible-body">
+                            <div class="row">
+                                <!-- Penalizaciones de Potencia -->
+                                <div class="input-field col s12 m6">
+                                    <input id="powerPenalties" type="number" min="0" step="any" value="2">
+                                    <label for="powerPenalties">Penalizaciones de Potencia (dB)</label>
+                                </div>
+                                <!-- Margen de Reparación -->
+                                <div class="input-field col s12 m6">
+                                    <input id="repairMargin" type="number" min="0" step="any" value="0.6">
+                                    <label for="repairMargin">Margen de Reparación (dB)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Botón Calcular -->
+                <div class="center-align">
+                    <button class="btn waves-effect waves-light orange" type="button" onclick="calculateLoss()">Calcular
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+
+            </form>
+
+            <!-- Resultado -->
+            <div class="resultado center-align">
+                <h5 id="result"></h5>
+                <p id="advice"></p>
+            </div>
+
+        </div>
+    </main>
+<!-- Nota de responsabilidad -->
+<p class="nota">
+    Nota: Beyondtech no se hace responsable por los cálculos realizados con esta herramienta. Los resultados son estimaciones y deben ser verificados. Use esta calculadora con precaución.
+    <!-- Importar jQuery y Materialize JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Script personalizado -->
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
